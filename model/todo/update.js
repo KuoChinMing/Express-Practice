@@ -2,7 +2,6 @@ const client = require("./connect");
 
 module.exports = async todo => {
   try {
-    // await client.connect();
     const collection = client.db("Todolist").collection("Todolist");
     const result = await collection.findOneAndUpdate(
       { id: todo.id },

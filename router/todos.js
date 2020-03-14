@@ -1,17 +1,9 @@
 const express = require("express");
 const router = express.Router();
-// const data = require("../data");
 const todoModel = require("../model/todo/main");
 
-// (async () => {
-// let result = await todoModel.create(data);
-// console.log(result);
-// result = await model.read({ message: "mmm" });
-// console.log(result);
-// })();
-
 router.use((req, res, next) => {
-  console.log("request comming...");
+  console.log("request comeing...");
   next();
 });
 

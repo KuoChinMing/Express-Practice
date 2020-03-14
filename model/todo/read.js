@@ -2,7 +2,6 @@ const client = require("./connect");
 
 module.exports = async searchKeywords => {
   try {
-    // await client.connect();
     const collection = client.db("Todolist").collection("Todolist");
     const query = searchKeywords
       ? { text: { $regex: `.*${searchKeywords}.*` } }

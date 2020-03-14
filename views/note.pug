@@ -15,5 +15,8 @@ block content
       p.ml-3.mb-0 會獨立開一頁供確認，或做成彈跳視窗等，這種刪除完會重新導向索引頁，就可能需要重新 Query 資料。
       p.ml-3.mb-0 可是有些設計是整個 List，可以勾選刪除、或更新的，這種就會是在 Response 回來後直接在前端動作，比較適合。
     li.mb-3
-      h5.ml-3.mb-0 Pug 載入 css 或 javascript 時，無法載入
+      h5.ml-3.mb-0 Pug 無法載入 css 或 javascript
       p.ml-3.mb-0 要設定 app.use(express.static("public")); 讓 Pug 路徑指到 public 資料夾下。
+    li.mb-3
+      h5.ml-3.mb-0 MongoDB 指令失效
+      p.ml-3.mb-0 MongoDB 官網寫的是 MongoDB CLI 指令，如果用 JS 寫，要去看 Node.js mongoDB Driver API
