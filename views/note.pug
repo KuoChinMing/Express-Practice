@@ -1,0 +1,19 @@
+extends layout.pug
+block content
+  //- ol
+  //-   each note in notes
+  //-     li.h5.font-weight-normal #{note}
+  ol
+    li.mb-3
+      h5.ml-3 Delete 或 Edit 一次 Todo 後，就抓不到 Click Event
+      p.ml-3.mb-0 因為載入了新的 DOM 元素，並沒有被之前的 EventListener 抓到，因此需要重新註冊一次。
+    li.mb-3
+      h5.ml-3.mb-0 像 Delete 這種會改動資料的操作，應該後端傳回 data ID，前端把畫面上的 Element 做刪除，
+      h5.ml-3.mb-0 還是應該在後端 Delete 成功後，前端重新 Query 整個資料?
+      h5.ml-3 前端直接刪除好像又多一層比較難 trace, 如果重新 query 感覺效率又會差一點
+      p.ml-3.mb-0 沒有一定答案，可能取決於 UI，像有些設計，因為要刪除那筆的內容資料很多，
+      p.ml-3.mb-0 會獨立開一頁供確認，或做成彈跳視窗等，這種刪除完會重新導向索引頁，就可能需要重新 Query 資料。
+      p.ml-3.mb-0 可是有些設計是整個 List，可以勾選刪除、或更新的，這種就會是在 Response 回來後直接在前端動作，比較適合。
+    li.mb-3
+      h5.ml-3.mb-0 Pug 載入 css 或 javascript 時，無法載入
+      p.ml-3.mb-0 要設定 app.use(express.static("public")); 讓 Pug 路徑指到 public 資料夾下。

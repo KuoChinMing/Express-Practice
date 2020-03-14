@@ -1,0 +1,6 @@
+each todo in todos
+  .todo.d-flex.align-items-center.my-3(data-id=todo.id)
+    .btn-group(role='group', aria-label='TODO item')
+      button.btn-todo-edit.btn.btn-outline-secondary(data-toggle="modal" data-target="#editModal" type='button' data-id=todo.id) Edit
+      button.btn-todo-delete.btn.btn-outline-secondary(data-toggle="modal" data-target="#deleteModal" type='button' data-id=todo.id) Delete
+    p.todo-text.mb-0.ml-3.h5.font-weight-normal #{todo.text}

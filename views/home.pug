@@ -1,0 +1,40 @@
+extends layout.pug
+block content
+  .input-group.mb-3
+    input#todo-input.form-control(type='text', placeholder="Input Something...", aria-label="TODO", aria-describedby='TODO-Add-Search')
+    .input-group-append#TODO-Add-Search
+        button#add-btn.btn.btn-outline-secondary(type='button') Add
+        button#search-btn.btn.btn-outline-secondary(type='button') Search
+  #todoList
+    each todo in todos
+      .todo.d-flex.align-items-center.my-3(data-id=todo.id)
+        .btn-group(role='group', aria-label='TODO item')
+          button.btn-todo-edit.btn.btn-outline-secondary(data-toggle="modal" data-target="#editModal" type='button' data-id=todo.id) Edit
+          button.btn-todo-delete.btn.btn-outline-secondary(data-toggle="modal" data-target="#deleteModal" type='button' data-id=todo.id) Delete
+        p.todo-text.mb-0.ml-3.h5.font-weight-normal #{todo.text}
+  #editModal.modal.fade(tabindex='-1', role='editModal', aria-labelledby='editModal', aria-hidden='true')
+    .modal-dialog.modal-dialog-centered(role='document')
+      .modal-content
+        .modal-header
+          h5.modal-title Edit Todo
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+        .modal-body
+          form
+            .form-group
+              textarea.edit-todo-text.form-control(rows=3) value......
+        .modal-footer
+          button.btn.btn-outline-secondary(type='button', data-dismiss='modal') Cancel
+          button.edit-todo-save.btn.btn-primary(type='button') Save
+  #deleteModal.modal.fade(tabindex='-1', role='deleteModal', aria-labelledby='deleteModal', aria-hidden='true')
+    .modal-dialog.modal-dialog-centered(role='document')
+      .modal-content
+        .modal-header
+          h5.modal-title Delete Todo
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+        .modal-body
+          p Are you sure you want to delete it?
+        .modal-footer
+          button.btn.btn-secondary(type='button', data-dismiss='modal') No
+          button.delete-todo-ok.btn.btn-outline-danger(type='button') Yes
